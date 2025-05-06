@@ -1,0 +1,12 @@
+name : Terraform CICD
+
+on:
+    push:
+      branches:
+        - master
+    workflow_dispatch:  
+
+jobs:
+  Terraform-initiate:
+    runs-on: ubuntu-latest
+    
