@@ -1,0 +1,39 @@
+name: terraform apply
+
+on:
+  push:
+    branches:
+      - main1
+
+jobs:
+  terraform_apply:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v2
+        with: 
+          terraform_version: 1.5.0
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}     
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          
+      - name: Terraform Initialize
+        run: terraform init
+
+      - name: Planned terraform changes
+        run: 
+          terraform show
+          terraform plan
+
+      - name: Apply changes to production
+        run : terraform apply -auto-approve    
+
