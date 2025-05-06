@@ -10,6 +10,7 @@ variable "ami-id" {
 
 variable "vpc-name" {
     description = "VPC name"
+    default = "myvpc"
      
 }
 
