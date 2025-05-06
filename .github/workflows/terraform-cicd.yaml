@@ -33,7 +33,7 @@ jobs:
         run: terraform init 
 
       - name: Validate Terraform configurations
-        run: terraform Validate
+        run: terraform validate
 
       - name: Planned terraform changes
         run: terraform plan -out=tfplan 
