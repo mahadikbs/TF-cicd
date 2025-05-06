@@ -28,12 +28,10 @@ jobs:
           aws-region: us-east-1
 
       - name: Initialize Terraform
-        run: terraform init 
+        run: terraform init  
 
       - name: Planned terraform changes
-        run: 
-          terraform show
-          terraform plan
+        run:  terraform plan
 
       - name: Apply changes to production
         run : terraform apply -auto-approve    
