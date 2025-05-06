@@ -3,7 +3,7 @@ name: terraform apply
 on:
   push:
     branches:
-      - main1
+      - main
 
 jobs:
   terraform_apply:
@@ -12,22 +12,23 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - name: Checkout repo
+      - name: checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup terraform
+      - name: setup Terraform
         uses: hashicorp/setup-terraform@v2
         with: 
           terraform_version: 1.5.0
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}     
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}      
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          
-      - name: Terraform Initialize
-        run: terraform init
+          aws-region: us-east-1
+
+      - name: Initialize Terraform
+        run: terraform init 
 
       - name: Planned terraform changes
         run: 
