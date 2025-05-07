@@ -33,6 +33,6 @@ jobs:
       - name: Planned terraform changes
         run:  terraform plan
 
-      - name: Apply changes to production
+      - name: Apply changes
         run : terraform apply -auto-approve    
 
