@@ -1,0 +1,15 @@
+name: Re-usable workflow for planning
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Terraform_plan:
+    uses: mahadikbs/reusable-workflows/.github/workflows/terraform-plan.yaml
+    with:
+      environment: production
+    secrets: 
+      aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}  
+      aws-secret-acess-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
