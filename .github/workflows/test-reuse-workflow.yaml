@@ -10,4 +10,6 @@ jobs:
     uses: mahadikbs/reusable-workflows/.github/workflows/terraform-plan.yaml@main
     with:
       environment: production
-    secrets: inherit
+    secrets: 
+      aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}  
+      aws-secret-acess-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
