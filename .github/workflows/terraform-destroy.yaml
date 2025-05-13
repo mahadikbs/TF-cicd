@@ -4,7 +4,7 @@ on:
     
 jobs:
   Terraform_plan:
-    uses: mahadikbs/reusable-workflows/.github/workflows/terraform-destroy.yaml
+    uses: mahadikbs/reusable-workflows/.github/workflows/terraform-destroy.yaml@main
     with:
       environment: production
       runner: ubuntu:latest
